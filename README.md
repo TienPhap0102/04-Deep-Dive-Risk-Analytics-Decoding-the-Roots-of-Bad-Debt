@@ -159,7 +159,7 @@ The Information page introduces the project background, objectives, insight summ
 
 ---
 
-### 👥 Borrowers Profiles Analysis**
+### 👥 Borrowers Profiles Analysis
 
   * **Purpose**: Breaks down the demographic and professional backgrounds of the client base to uncover vulnerable borrower segments.
   * **Key Analysis**: Correlates the default ratio against income, employment type, and housing status. Features a Pareto Analysis illustrating that approximately 20% of customer groups are responsible for 80% of the total value of overdue debt.
@@ -168,7 +168,7 @@ The Information page introduces the project background, objectives, insight summ
 
 ---
 
-### 💳 Loan Characteristic & Risk**
+### 💳 Loan Characteristic & Risk
 
   * **Purpose**: Examines how structural loan elements (grades, interest rates, terms) correlate with portfolio risk.
   * **Key Analysis**: Maps the Total Clients & Default Rate by Grade, demonstrating a steep risk curve. Tracks a High Risk Ratio of 15.02% and Total Other Debts amounting to $376.90M.
@@ -177,7 +177,7 @@ The Information page introduces the project background, objectives, insight summ
 
 ---
 
-### ⚠️ Financial Health & Warning**
+### ⚠️ Financial Health & Warning
 
   * **Purpose**: Acts as an early warning system by monitoring the debt burden and credit history of active borrowers.
   * **Key Analysis**: Analyzes default rates against History of Use Credit & Delinquencies. Identifies critical warning zones by mapping the DTI group against default likelihood. 
@@ -333,6 +333,38 @@ To transition from descriptive analytics to predictive insights, a machine learn
 │
 └── 📄 README.md                             # Project documentation
 ```
+
+---
+
+## ✅ How to Use This Project
+
+### Power BI Dashboard
+
+1. Open the `.pbix` file using Power BI Desktop.
+2. Navigate through the dashboard pages.
+3. Use filters such as Country, Loan Term, Loan Grade, Employment Type, and House Ownership.
+4. Analyze borrower segments, loan characteristics, and financial warning indicators.
+
+### Orange Machine Learning Workflow
+
+1. Open the `.ows` workflow file in Orange Data Mining.
+2. Load the cleaned dataset.
+3. Run the Test & Score widget to compare models.
+4. Use Confusion Matrix and ROC Analysis to evaluate model performance.
+5. Export prediction results if needed.
+
+---
+
+## 🏁 Final Conclusion
+
+This project demonstrates how credit risk can be analyzed through both **business intelligence** and **machine learning**.
+
+The Power BI dashboard provides a comprehensive view of portfolio performance, borrower risk profiles, loan characteristics, and financial warning signals. Meanwhile, the Orange machine learning workflow supports default prediction and model comparison.
+
+The analysis shows that credit default risk is strongly influenced by borrower income, employment status, housing ownership, loan purpose, loan grade, and financial stress indicators such as DTI and LTI.
+
+Among the tested machine learning models, **Random Forest performs best** and is recommended for credit default prediction.
+
 
 ---
 
