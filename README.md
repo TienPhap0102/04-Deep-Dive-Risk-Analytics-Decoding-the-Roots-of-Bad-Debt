@@ -121,7 +121,10 @@ To predict the probability of default for future applications, a machine learnin
     
 * **Model Evaluation:** The models were evaluated using the Test and Score widget, Confusion Matrix, and ROC Analysis to determine the most effective predictive algorithm.
 
-* **Outputs:** Final predictions were generated and exported to external data tables for further review[cite: 2].
+* **Outputs:** Final predictions were generated and exported to external data tables for further review.
+
+<img width="1926" height="1486" alt="image" src="https://github.com/user-attachments/assets/e04f95a5-baec-4ef4-baa0-e8df1853f37d" />
+
 
 ---
 
@@ -193,6 +196,13 @@ To transition from descriptive analytics to predictive insights, a machine learn
 | **SVM** | 0.752 | 0.722 | 0.740 | 0.774 | 0.722 | 0.324 |
 | **Random Forest** | 0.901 | 0.919 | 0.915 | 0.920 | 0.919 | 0.751 |
 
+**Observation:**
+
+* **Random Forest:** The absolute best performer across all metrics (AUC: 0.901, F1: 0.915, Prec: 0.919), showing exceptional and balanced classification ability.
+
+* **SVM:** Achieved moderate results (AUC: 0.752), lacking the high reliability required for strict financial risk management.
+
+* **Logistic Regression:** Performed the worst (AUC: 0.500, MCC: 0.000), proving to be no better than a random guess.
 
 ---
 
@@ -206,6 +216,12 @@ To transition from descriptive analytics to predictive insights, a machine learn
 | **1 (Default)** | 8.2% | 92.4% | **4976** |
 | **$\Sigma$** | **19116** | **3691** | **22807** |
 
+**Observation:**
+
+* Accurately identified 92.4% of actual defaults within its high-risk predictions, making it highly effective at minimizing financial loss.
+
+* Correctly classified 91.8% of non-default cases, maintaining a low false-alarm rate (7.6%) to ensure good customers are not wrongly rejected.
+  
 ---
 
 * **Support Vector Machine (SVM)**
@@ -215,6 +231,12 @@ To transition from descriptive analytics to predictive insights, a machine learn
 | **0 (Non-Default)** | 87.6% | 59.0% | **17831** |
 | **1 (Default)** | 12.4% | 41.0% | **4976** |
 | **$\Sigma$** | **15312** | **7495** | **22807** |
+
+**Observation:**
+
+* High False Alarms: 59.0% of its default predictions were actually safe customers. This would lead the bank to reject a massive amount of good loan applications.
+
+* Poor Risk Catch Rate: When predicting a default, it was only correct 41.0% of the time, making it unfit for a risk-averse business.
 
 ---
 
@@ -226,25 +248,92 @@ To transition from descriptive analytics to predictive insights, a machine learn
 | **1 (Default)** | 21.8% | NA | **4976** |
 | **$\Sigma$** | **22807** | **0** | **22807** |
 
+**Observation:**
+
+* Complete Underfitting: The model failed entirely by predicting every single application as "safe" (Class 0), completely ignoring all actual defaults.
+
+* Misleading Accuracy: The 78.2% accuracy it achieved merely reflects the natural distribution of safe customers in the original dataset. The model learned absolutely nothing about distinguishing between the two classes.
+
 --- 
 
 #### Model evaluation based on ROC Curve
 
+<img width="2551" height="1508" alt="image" src="https://github.com/user-attachments/assets/2c4f984a-d87e-488c-aae7-90a1ab1fe556" />
 
+**Observation:**
 
+* **Random Forest:** The curve bows closest to the top-left corner, visually confirming it has the highest Area Under the Curve (AUC) and is the most robust model for distinguishing between default and non-default applications.
+  
+* **Support Vector Machine - SVM:** Sits entirely below the Random Forest curve, indicating moderate predictive power but demonstrating a clear performance gap compared to the leading model.
+  
+* **Logistic Regression:** Perfectly aligns with the diagonal baseline of random chance. This visually reinforces its complete inability to discriminate between safe and risky loans, rendering it practically useless for this dataset.
 
+---
 
+## 💡Key Findings
 
+**Loan Portfolio Overview and Systemic Risk:**
+* The total loan amount reaches $312.43 million, however, the overall default ratio remains quite high at 21.82%.
+* The Loan Grade system reflects risk very accurately: The default rate for Grade A is under 10% (specifically 8.99%), but surges to 98.44% for Grade G.
 
+**Impact of Income and Debt Burden (DTI):**
+* The Debt-to-Income (DTI) ratio is an extremely strong risk indicator; when the DTI exceeds 40%, the default rate jumps to a highly dangerous level between 74.32% and 81.48%.
+* Clients with an annual income below $30,000 have a default rate surging to 47.07%. 
 
+**Loan Intention:**
+* Loans used for "Debt Consolidation" pose the highest risk, leading with a default rate of 28.59%.
+* This is followed by loans for Medical purposes at 26.70% and Home Improvement at 26.10%
 
+**Customer Behavior and Pareto Principle (80/20:)**
+* The highest risk segment (40% - 80% default rate) is concentrated in part-time workers or the unemployed who rent their homes.
+* However, in terms of absolute value, approximately 20% of the customer groups are responsible for 80% of the total bad debt value; notably, the majority of this bad debt originates from full-time employees who are renting or have a mortgage.
 
+---
 
+## 🚀 Strategic Recommendations & Action Plan
 
+**Tighten Underwriting Policies**
+* Establish automated rejection rules or mandate additional collateral for loan applications with a Debt-to-Income (DTI) ratio exceeding 40% to mitigate the severe default risk of 74% - 81%.
+* Immediately halt the disbursement of new loans for the extreme-risk segment classified as Grade G.
+* Enforce stricter financial verification processes for highly vulnerable segments, specifically targeting part-time workers or unemployed individuals who are currently renting their homes.
 
+**Apply Risk-Based Pricing**
+* Increase interest rates or lower the maximum credit limits for loans intended for "Debt Consolidation" to compensate for the high-risk nature of this group.
 
+**Collection Optimization**
+* Instead of spreading efforts thin, the debt collection department should redirect 80% of its operational resources to focus on the 20% of customers who create the highest-value risk impact.
+* Prioritize the close monitoring of full-time employees who are currently renting or paying off a mortgage, as this group generates the largest bad debt burden in terms of total value.
 
+---
 
+## 📁 Repository Structure
+
+```text
+📦 Credit-Risk-Analytics
+├── 📂 datasets
+│   ├── dataset.csv                          # Original dataset
+│   ├── data for ML                          # Cleaned dataset for Machine Learning
+│   └── data_dictionary.xlsx                 # Data dictionary
+│
+├── 📂 images
+│   ├── information.png                      # Information page screenshot
+│   ├── business_overview.png                # Business Overview dashboard screenshot
+│   ├── borrowers_profiles_analysis.png      # Borrowers Profiles Analysis screenshot
+│   ├── loan_characteristic_risk.png         # Loan Characteristic & Risk screenshot
+│   ├── financial_health_warning.png         # Financial Health & Warning screenshot
+│   ├── orange_workflow.png                  # Orange workflow screenshot
+│
+├── Credit_Risk_Dashboard.pbix               # Power BI dashboard file
+│
+├── credit_risk_model.ows                    # Orange machine learning workflow
+│
+└── 📄 README.md                             # Project documentation
+```
+
+---
+
+Presenter: Tien Phap
+Project Completion Date: 07/2026
 
 
 
