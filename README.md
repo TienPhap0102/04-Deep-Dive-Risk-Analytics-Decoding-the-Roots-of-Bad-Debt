@@ -1,5 +1,9 @@
 # **Deep-Dive Risk Analytics: Decoding the Roots of Bad Debt**
 
+[View the live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZDY5OWY1ZjEtODYzMy00ZGMyLTg3NTEtOTQ1YWI3NDkzYzgwIiwidCI6IjM3MGZiM2I4LTMzMDYtNDg5MC05MDYzLWNjMDhiZTc4ODI1NyIsImMiOjEwfQ%3D%3D)
+
+---
+
 ## 📖 Project Overview
 
 In the financial lending industry, credit risk management plays a critical role in maintaining portfolio quality, reducing bad debt, and improving underwriting decisions.
