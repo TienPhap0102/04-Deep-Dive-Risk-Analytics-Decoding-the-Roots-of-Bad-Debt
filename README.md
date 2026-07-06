@@ -108,13 +108,28 @@ Median imputation was used because both variables are numerical and may contain 
 - Created derived features such as `loan_to_income_ratio`, `debt_to_income_ratio`, `DTI_group`, `LTI_group`, and `risk_combo_segment`.
 - Prepared the final cleaned dataset for Power BI dashboarding and Orange machine learning modeling.
 
+## 🤖 Predictive Modeling Workflow
+
+To predict the probability of default for future applications, a machine learning pipeline was constructed using Orange tool
+
+* **Data Splitting:** The dataset was sampled and split into a 70% training set and a 30% testing set. Stratified sampling was utilized to ensure balanced class representation.
+  
+* **Algorithms:** Three primary classification algorithms were trained: 
+  * Logistic Regression
+  * Support Vector Machine (SVM)
+  * Random Forest
+    
+* **Model Evaluation:** The models were evaluated using the Test and Score widget, Confusion Matrix, and ROC Analysis to determine the most effective predictive algorithm.
+
+* **Outputs:** Final predictions were generated and exported to external data tables for further review[cite: 2].
+
 ---
 
 ## 📊 Dashboard Architecture & Key Features
 
 The Power BI dashboard is structured into **5 interactive pages**:
 
-### 1. Information
+### Information
 
 The Information page introduces the project background, objectives, insight summary, and business recommendations.
 
@@ -124,12 +139,96 @@ The Information page introduces the project background, objectives, insight summ
   - Summarizes major risk insights.
   - Provides strategic recommendations for risk control.
 
-![Information Page](<img width="1545" height="877" alt="image" src="https://github.com/user-attachments/assets/3ea206e7-8d60-44c4-9532-3f183fc5ff89" />
-)
+<img width="1545" height="877" alt="image" src="https://github.com/user-attachments/assets/3ea206e7-8d60-44c4-9532-3f183fc5ff89" />
 
 ---
 
+### 📈 Business Overview
 
+  * **Purpose**: Provides a high-level executive summary of portfolio size, client volume, and overarching default trends.
+  * **Key Analysis**: Tracks macro-level KPIs such as the Total Loan Amount ($312.43M) and the baseline Default Ratio (21.82%). Evaluates how default rates vary by specific Loan Intentions, highlighting Debt Consolidation at 28.59%.
+
+<img width="1538" height="870" alt="image" src="https://github.com/user-attachments/assets/d21013c2-f3aa-46cb-b8ff-9b5651bba37a" />
+
+---
+
+### 👥 Borrowers Profiles Analysis**
+
+  * **Purpose**: Breaks down the demographic and professional backgrounds of the client base to uncover vulnerable borrower segments.
+  * **Key Analysis**: Correlates the default ratio against income, employment type, and housing status. Features a Pareto Analysis illustrating that approximately 20% of customer groups are responsible for 80% of the total value of overdue debt.
+
+<img width="1542" height="875" alt="image" src="https://github.com/user-attachments/assets/d3b8cded-99fa-4b54-8912-72ded965ad2e" />
+
+---
+
+### 💳 Loan Characteristic & Risk**
+
+  * **Purpose**: Examines how structural loan elements (grades, interest rates, terms) correlate with portfolio risk.
+  * **Key Analysis**: Maps the Total Clients & Default Rate by Grade, demonstrating a steep risk curve. Tracks a High Risk Ratio of 15.02% and Total Other Debts amounting to $376.90M.
+
+<img width="1540" height="881" alt="image" src="https://github.com/user-attachments/assets/dba1c888-4fa9-410e-9566-b3d79227e1b5" />
+
+---
+
+### ⚠️ Financial Health & Warning**
+
+  * **Purpose**: Acts as an early warning system by monitoring the debt burden and credit history of active borrowers.
+  * **Key Analysis**: Analyzes default rates against History of Use Credit & Delinquencies. Identifies critical warning zones by mapping the DTI group against default likelihood. 
+
+<img width="1541" height="875" alt="image" src="https://github.com/user-attachments/assets/70db5165-a276-4531-8ff8-a9f08bb1416a" />
+
+---
+
+### Modeling Approach
+
+To transition from descriptive analytics to predictive insights, a machine learning pipeline was developed using Orange3 Data Mining software. The goal is to accurately classify high-risk loan applications before approval.
+
+---
+
+#### Model evaluation based on Test & Score table 
+
+| Model | AUC | CA | F1 | Prec | Recall | MCC |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | 0.500 | 0.782 | 0.686 | 0.611 | 0.782 | 0.000 |
+| **SVM** | 0.752 | 0.722 | 0.740 | 0.774 | 0.722 | 0.324 |
+| **Random Forest** | 0.901 | 0.919 | 0.915 | 0.920 | 0.919 | 0.751 |
+
+
+---
+
+#### Model evaluation based on Confusion Matrix
+
+* **Random Forest**
+
+| Actual \ Predicted | 0 (Non-Default) | 1 (Default) | $\Sigma$ |
+| :--- | :---: | :---: | :---: |
+| **0 (Non-Default)** | 91.8% | 7.6% | **17831** |
+| **1 (Default)** | 8.2% | 92.4% | **4976** |
+| **$\Sigma$** | **19116** | **3691** | **22807** |
+
+---
+
+* **Support Vector Machine (SVM)**
+
+| Actual \ Predicted | 0 (Non-Default) | 1 (Default) | $\Sigma$ |
+| :--- | :---: | :---: | :---: |
+| **0 (Non-Default)** | 87.6% | 59.0% | **17831** |
+| **1 (Default)** | 12.4% | 41.0% | **4976** |
+| **$\Sigma$** | **15312** | **7495** | **22807** |
+
+---
+
+* **Logistic Regression**
+
+| Actual \ Predicted | 0 (Non-Default) | 1 (Default) | $\Sigma$ |
+| :--- | :---: | :---: | :---: |
+| **0 (Non-Default)** | 78.2% | NA | **17831** |
+| **1 (Default)** | 21.8% | NA | **4976** |
+| **$\Sigma$** | **22807** | **0** | **22807** |
+
+--- 
+
+#### Model evaluation based on ROC Curve
 
 
 
