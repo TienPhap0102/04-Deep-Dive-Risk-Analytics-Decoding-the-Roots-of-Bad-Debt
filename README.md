@@ -365,33 +365,8 @@ The analysis shows that credit default risk is strongly influenced by borrower i
 
 Among the tested machine learning models, **Random Forest performs best** and is recommended for credit default prediction.
 
-
 ---
 
 Presenter: Tien Phap
+
 Project Completion Date: 07/2026
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
