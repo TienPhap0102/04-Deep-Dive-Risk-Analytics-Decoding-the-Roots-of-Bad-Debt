@@ -1,6 +1,6 @@
 # **Deep-Dive Risk Analytics: Decoding the Roots of Bad Debt**
 
-[View the live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZDY5OWY1ZjEtODYzMy00ZGMyLTg3NTEtOTQ1YWI3NDkzYzgwIiwidCI6IjM3MGZiM2I4LTMzMDYtNDg5MC05MDYzLWNjMDhiZTc4ODI1NyIsImMiOjEwfQ%3D%3D)
+[View the live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZTFiZGRmN2ItODM2OS00MmZjLThjNDctYTQ0ODEzYTAzNjQ2IiwidCI6IjM3MGZiM2I4LTMzMDYtNDg5MC05MDYzLWNjMDhiZTc4ODI1NyIsImMiOjEwfQ%3D%3D)
 
 ---
 
